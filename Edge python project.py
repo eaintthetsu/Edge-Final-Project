@@ -5,13 +5,17 @@ from bs4 import BeautifulSoup
 def get_AQI():
     r=requests.get('https://air-quality.com/place/myanmar-burma/yangon/02fe4b9d?lang=en&standard=aqi_us')
     soup=bs4.BeautifulSoup(r.text,"html")
-    price= soup.find('div', {'class' : 'indexValue'}).text
-    return price
+    value= soup.find('div', {'class' : 'indexValue'}).text
+    return value
+
+def get_indicator():
+    r=requests.get('https://air-quality.com/place/myanmar-burma/yangon/02fe4b9d?lang=en&standard=aqi_us')
+    soup=bs4.BeautifulSoup(r.text,"html")
+    indicator=soup.find('div', {'class': 'levelWrap'}).text
+    return indicator
 
 
-print("The current AQI: " + str(get_AQI()))
 
-for price in range(0,200):
-    if price < 50:
-        print("good")
-        break
+print("The Current AQI in Yangon: "+ str(get_AQI())
+
+print("The air quality is " + "+str")
